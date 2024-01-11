@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 
+import numeral from 'numeral';
+
 import './App.css';
 
 function App() {
@@ -10,9 +12,12 @@ function App() {
   const [productPrice, setProductPrice] = useState("");
 
   const handleAddProduct = (productName, productPrice) => {
+
+    const formattedPrice = numeral(productPrice).format('$0,0.00');
+
       let newProduct = {
         name: productName,
-        price: productPrice
+        price: formattedPrice
       }
 
       setList([...list, newProduct]);
@@ -47,6 +52,7 @@ function App() {
             <button className='submit-btn' type="submit" onClick={() => handleAddProduct(productName, productPrice)}>Submit</button>
             </div>
           <div className='todo-list'>
+            <scrollX>
             {list.map((item, index) => (
               <div className='todo-item' key={index}>
                 <div>
@@ -56,6 +62,7 @@ function App() {
                 <button className='delete-btn' onClick={() => handleDeleteSelectedItem(index)}>Delete</button>
               </div>
             ))}
+            </scrollX>
           </div>
         </div>
       </header>
