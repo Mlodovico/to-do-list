@@ -12,7 +12,7 @@ function App() {
   const [productPrice, setProductPrice] = useState("");
 
   const handleAddProduct = (productName, productPrice) => {
-    const formattedPrice = numeral(productPrice).format("$0,0.00");
+    const formattedPrice = numeral(productPrice).format("R$0,0.00");
 
     let newProduct = {
       name: productName,
@@ -68,20 +68,25 @@ function App() {
           </div>
           <div className="todo-list">
             <scrollX>
-              {list.map((item, index) => (
-                <div className="todo-item" key={index}>
-                  <div>
-                    <span>{item.name}</span>
-                    <span>$ {item.price}</span>
-                  </div>
-                  <button
-                    className="delete-btn"
-                    onClick={() => handleDeleteSelectedItem(index)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              ))}
+              {list.map((item, index) => {
+                console.log(index)
+                if (index >= 0) {
+                  return (
+                    <div className="todo-item" key={index}>
+                      <span>{item.name}</span>
+                      <span>{item.price}</span>
+                      <button
+                        className="delete-btn"
+                        onClick={() => handleDeleteSelectedItem(index)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  );
+                } else {
+                  return <h1 className="no-item">Nenhum item</h1>;
+                }
+              })}
             </scrollX>
           </div>
         </div>

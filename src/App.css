@@ -17,7 +17,6 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -29,7 +28,8 @@
   height: 30vh;
   width: 65vh;
   display: grid;
-  grid-template-areas: 'left right';
+  gap: 10px;
+  grid-template-areas: 'left right right right right right';
   margin: 20px;
   border-radius: 16px;
   background: rgba(132, 29, 191, 0.84);
@@ -37,7 +37,6 @@
 }
 
 .form-div {
-  width: 45%;
   grid-area: left;
   display: flex;
   flex-direction: column;
@@ -81,16 +80,39 @@
 .todo-list {
   grid-area: right;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  padding: 20px;
-  background: red;
 }
 
 .todo-item {
   width: 100%;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  display: flex;
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 8px;
+  font-size: 20px;
+  background: rgba(194, 185, 199, 0.84);
+}
+
+.no-item {
+  font-size: 20px;
+  color: white;
+}
+
+.delete-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+  background: red;
+  transition: background-color 1.5s ease;
 }
 
 .App-link {
